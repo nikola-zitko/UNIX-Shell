@@ -177,7 +177,7 @@ void history(char* input){
         fprintf(stdout, "ERROR: File couldn't be opened.\n");
     }
     else{
-        fprintf(historyFile, "%s\n", input);
+        fprintf(historyFile, "%s", input);
         fclose(historyFile);
     }
 }

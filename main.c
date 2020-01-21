@@ -72,6 +72,11 @@ char* tilde(char *orig){
     strcpy(tmp, orig);
     return result;
 }
+void printdir(){
+    char cwd[1024];
+    getcwd(cwd, sizeof(cwd));
+    printf(": %s", cwd);
+}
 
 void lsh_loop(void){
 
@@ -81,7 +86,9 @@ void lsh_loop(void){
     char* username = getenv("USER");
   
 	do{
-		printf("%s@%s%s %s-->%s ",COLOR_BLUE, username, RESET, BOLD, RESET);
+        printf("%s@%s%s",COLOR_BLUE, username, RESET);
+        printdir();
+		printf("%s ->%s ", BOLD, RESET);
 		line = lsh_read_line();
         history(line);
         line = tilde(line);
